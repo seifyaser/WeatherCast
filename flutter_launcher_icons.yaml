@@ -1,0 +1,6 @@
+flutter_launcher_icons:
+  android: true # For generating Android launcher icon
+  ios: true # For generating iOS launcher icon
+  image_path: "assets/3d-icon-weather-conditions-with-thunderstorm_23-2150108721.jpg" # Path to your launcher icon image
+  min_sdk_android: 21 # Minimum SDK for Android, default is 21
+  remove_alpha_ios: true #remove transparency of icon in ios 
