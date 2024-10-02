@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/screens/firstscreen.dart';
+import 'package:weather/screens/onboarding.dart';
 import 'package:weather/screens/homepage.dart';
 import 'package:weather/screens/splash.dart';
 
@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
  routes: {
  'HomePage' : (context) => homepage(),
  'splash' : (context) => spalsh(),
- 'firstpage' : (context) => onBoarding(),
+ 'firstpage' : (context) => OnBoarding(),
  //  'Searchview' : (context) => searchview(),
  },
- initialRoute: 'firstpage',
+ initialRoute: 'splash',
     );
   }
 }

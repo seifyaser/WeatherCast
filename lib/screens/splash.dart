@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:weather/screens/homepage.dart';
+import 'package:weather/screens/onboarding.dart';
 
 class spalsh extends StatefulWidget {
   const spalsh({super.key});
@@ -31,9 +31,12 @@ redirect();
           gradient: LinearGradient(
             end: Alignment.topCenter,
             colors: [
-              
-              Colors.black,
               Colors.deepPurple,
+              Color(0xffffab40),
+              Colors.deepPurple,
+              Color(0xffffab40),
+              Colors.deepPurple,
+              Color(0xffffab40),
              //
             ]
             )
@@ -52,10 +55,10 @@ redirect();
   }
 
    Future<void> redirect() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(
   context,
-  MaterialPageRoute(builder: (context) => homepage()),
+  MaterialPageRoute(builder: (context) => OnBoarding()),
 );
 
   }
