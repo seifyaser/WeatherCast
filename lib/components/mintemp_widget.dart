@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/Models/Weather_model.dart';
 
 class MinTempWidget extends StatelessWidget {
@@ -16,17 +17,13 @@ class MinTempWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Temp. Min',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300
-                ),
+                 style: GoogleFonts.montserrat(
+                   textStyle:const TextStyle(color: Color.fromARGB(141, 255, 255, 255), fontWeight: FontWeight.w600,fontSize: 12),)
                 ),
                 SizedBox(height: 3,),
                   Text('${currentWeather?.MinTemp.toInt() ?? '--'}°C',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700
-                ),
+                 style: GoogleFonts.montserrat(
+                   textStyle:const TextStyle(color: Colors.white, fontWeight: FontWeight.w700,fontSize: 15),)
                 ),
               ],
             )

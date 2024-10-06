@@ -27,8 +27,10 @@
 // }
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather/Models/Weather_model.dart';
+import 'package:weather/components/gps_denied_message.dart';
 
 class WeatherService {
   final String baseUrl = 'https://api.weatherapi.com/v1';
@@ -38,14 +40,30 @@ class WeatherService {
   WeatherService({required this.dio});
 
   // الحصول على الموقع الحالي
-  Future<Position> getCurrentLocation() async {
+  Future<Position> getCurrentLocation(BuildContext context) async {
     bool serviceEnabled;
     LocationPermission permission;
 
     // التحقق من تمكين خدمة الموقع
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      throw Exception('Location services are disabled.');
+       showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Service Disabled'),
+          content: Text('Location services are disabled.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // إغلاق الـ AlertDialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
     }
 
     // طلب الإذن للوصول إلى الموقع
@@ -53,13 +71,22 @@ class WeatherService {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        throw Exception('Location permissions are denied');
+         showDialog(
+         context: context,
+        builder: (BuildContext context) {
+          return const GPS_denied_message();
+        },
+      );
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      throw Exception(
-          'Location permissions are permanently denied, we cannot request permissions.');
+       showDialog(
+         context: context,
+        builder: (BuildContext context) {
+          return const GPS_denied_message();
+        },
+      );
     }
 
     // جلب الموقع الحالي
@@ -67,15 +94,16 @@ class WeatherService {
   }
 
   // جلب الطقس بناءً على الموقع الحالي
-  Future<weatherModel> getWeatherByLocation() async {
+  Future<weatherModel> getWeatherByLocation(BuildContext context) async {
     try {
       // جلب الموقع الحالي
-      Position position = await getCurrentLocation();
-print('Current location: ${position.latitude}, ${position.longitude}');
+      Position position = await getCurrentLocation(context);
+    print('Current location: ${position.latitude}, ${position.longitude}');
 
-      // استدعاء API بناءً على إحداثيات الموقع
+      // بناءً على إحداثيات الموقع
+      //استدعاء API
       Response response = await dio.get(
-        '$baseUrl/forecast.json?key=$apiKey&q=${position.latitude},${position.longitude}&days=1',
+        '$baseUrl/forecast.json?key=$apiKey&q=${position.latitude},${position.longitude}&days=7',
       );
    print('API Response: ${response.data}');
 
@@ -88,4 +116,20 @@ print('Current location: ${position.latitude}, ${position.longitude}');
       
     }
   }
+
+  Future<weatherModel> getCurrentWeather({required String CityName}) async {
+    
+    try {
+      Response response = await dio.get('$baseUrl/forecast.json?key=$apiKey&q=$CityName&days=7');
+      //check response work
+      print('Raw Response Data: ${response.data}');
+      return weatherModel.fromJson(response.data);
+      
+    } on DioException catch (e) {
+      final String errMessage = e.response?.data['error']['message'] ?? 'oops there was an error, try later';
+      throw Exception(errMessage);
+    }
+    
+  }
 }
+

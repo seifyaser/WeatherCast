@@ -27,26 +27,26 @@ redirect();
             width: double.infinity,
             height: double.infinity,
             decoration:const BoxDecoration( 
-              //LinearGradient make mix of colors as u like
-          gradient: LinearGradient(
-            end: Alignment.topCenter,
-            colors: [
-              Colors.deepPurple,
-              Color(0xffffab40),
-              Colors.deepPurple,
-              Color(0xffffab40),
-              Colors.deepPurple,
-              Color(0xffffab40),
-             //
-            ]
-            )
+         color: Colors.black
             ),
           child: Column(
             children: [
             
-               Lottie.asset('assets/splash.json'),
-               Lottie.asset('assets/loading.json')
-              
+               Padding(
+                 padding: const EdgeInsets.only(top: 150),
+                 child: Lottie.asset('assets/splash.json'),
+               ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 220),
+              child: Center(
+                child: Column(
+                  children: [Text('WeatherCast',style: TextStyle(color: Colors.white),),
+                  Text('V 1.0',style: TextStyle(color: Colors.white)),
+                  ],
+                ),
+              ),
+            )
             ],
           ),
         ),

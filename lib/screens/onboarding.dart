@@ -34,7 +34,7 @@ class _OnBoardingState extends State<OnBoarding> {
       // إذا لم تكن أول مرة، قم بتوجيه المستخدم إلى الشاشة الرئيسية
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) =>  homepage()),
+        MaterialPageRoute(builder: (context) =>  Homepage()),
       );
     }
   }
@@ -68,12 +68,12 @@ class _OnBoardingState extends State<OnBoarding> {
           child: IntroScreenOnboarding(
             introductionList: list,
             onTapSkipButton: () => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) =>  homepage())),
+                context, MaterialPageRoute(builder: (context) =>  Homepage())),
             backgroudColor: const Color.fromARGB(255, 255, 255, 255),
             foregroundColor: const Color.fromARGB(255, 112, 86, 208),
             skipTextStyle: const TextStyle(
               color: Color.fromARGB(255, 112, 86, 208),
-              fontSize: 18,
+              fontSize: 15,
             ),
           ),
         ),

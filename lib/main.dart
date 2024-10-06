@@ -1,7 +1,10 @@
+
 import 'package:flutter/material.dart';
+import 'package:weather/components/next_days_buttons.dart';
 import 'package:weather/screens/onboarding.dart';
 import 'package:weather/screens/homepage.dart';
 import 'package:weather/screens/splash.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +20,10 @@ class MyApp extends StatelessWidget {
  debugShowCheckedModeBanner: false,
 
  routes: {
- 'HomePage' : (context) => homepage(),
+ 'HomePage' : (context) => Homepage(),
  'splash' : (context) => spalsh(),
  'firstpage' : (context) => OnBoarding(),
- //  'Searchview' : (context) => searchview(),
+  'Searchview' : (context) => NextDaysButton(),
  },
  initialRoute: 'splash',
     );

@@ -36,8 +36,6 @@ class align2 extends StatelessWidget {
   ),
  );
   }
-
-  
 }
 
 class align3 extends StatelessWidget {
@@ -51,7 +49,26 @@ class align3 extends StatelessWidget {
     height: 300,
     width: 300,
     decoration: BoxDecoration(
-      color: Color(0xffffab40)
+      color: Color.fromARGB(255, 14, 168, 119)
+    ),
+  ),
+ );
+  }
+}
+
+class align4 extends StatelessWidget {
+  const align4({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Align(
+  alignment: AlignmentDirectional(0,-1.2),
+  child: Container(
+    height: 300,
+    width: 300,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: Color.fromARGB(255, 44, 140, 147)
     ),
   ),
  );

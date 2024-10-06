@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/Models/Weather_model.dart';
 
 class sunriseWidget extends StatelessWidget {
@@ -20,17 +21,13 @@ class sunriseWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Sunrise',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w300
-                    ),
+                    style: GoogleFonts.montserrat(
+                   textStyle:const TextStyle(color: Color.fromARGB(141, 255, 255, 255), fontWeight: FontWeight.w600,fontSize: 12),)
                     ),
                     SizedBox(height: 3,),
                       Text('${currentWeather?.Sunrise ?? '--'}',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700
-                    ),
+                   style: GoogleFonts.montserrat(
+                   textStyle:const TextStyle(color: Colors.white, fontWeight: FontWeight.w700,fontSize: 15),)
                     ),
                   ],
                 )
