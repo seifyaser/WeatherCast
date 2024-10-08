@@ -229,7 +229,8 @@ class _HomepageState extends State<Homepage> {
                                  ),
                                  ),
                                   const SizedBox(height: 20),
-                                  NextDaysButton(),
+                                   NextDaysButton(cityName: currentWeather?.CityName ?? 'Unknown Location'),
+
                                   const SizedBox(height: 20),
                                   Column(
                                     children: [

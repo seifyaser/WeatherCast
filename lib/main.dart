@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
  'HomePage' : (context) => Homepage(),
  'splash' : (context) => spalsh(),
  'firstpage' : (context) => OnBoarding(),
-  'Searchview' : (context) => NextDaysButton(),
+  'Searchview' : (context) => NextDaysButton(cityName: '',),
  },
  initialRoute: 'splash',
     );

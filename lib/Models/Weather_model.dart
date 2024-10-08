@@ -9,10 +9,8 @@ class weatherModel{
  final String WeatherCondition;
  final String Sunrise;
  final String Sunset;
- final List<double> dailyTemps;
 
   weatherModel( {
-     required this.dailyTemps,
     required this.CityName,
      required this.date,
       required this.temp,
@@ -23,9 +21,6 @@ class weatherModel{
            required this.Sunset});
 
   factory weatherModel.fromJson(json) {
-      List<double> dailyTemperatures = (json['forecast']['forecastday'] as List)
-        .map((day) => double.tryParse(day['day']['avgtemp_c'].toString()) ?? 0.0)
-        .toList();
   return weatherModel(
     CityName: json['location']['name'],
     // date: DateTime.parse(json['location']['localtime']),
@@ -36,7 +31,6 @@ class weatherModel{
     WeatherCondition: json['forecast']['forecastday'][0]['day']['condition']['text'],
     Sunrise: json['forecast']['forecastday'][0]['astro']['sunrise'],
     Sunset: json['forecast']['forecastday'][0]['astro']['sunset'],
-     dailyTemps: dailyTemperatures,
   );
 }
 
